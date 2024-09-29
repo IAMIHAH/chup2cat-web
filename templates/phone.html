@@ -1,0 +1,62 @@
+<head>
+	<title>전화번호 인증│첩첩냥 계정</title>
+	<link href="/public/css/main.css" rel="stylesheet" type="text/css" />
+	<link href="/public/css/phone.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<div class="title">
+		전화번호 인증
+	</div>
+	<div class="mainTable">
+		<div class="subTable">
+			<a class="subTableTitle">전화번호</a>
+			<input type="text" class="phone" placeholder="전화번호를 입력해주세요.">
+			<button class="sendButton" onclick="sendNumber()">인증번호 전송</button>
+			<script>
+				function sendNumber() {
+					fetch('/auth/login/phone', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						body: JSON.stringify({
+							phone: document.querySelector('.phone').value
+						})
+					}).then(res => res.json()).then(json => {
+						if (json.status == 200) {
+							alert('인증번호가 전송되었어요.');
+							document.querySelector('.sendButton').remove();
+							document.querySelector('.phone').disabled = true;
+						} else {
+							alert('인증번호 전송에 실패했어요. 다시 시도해주세요!');
+						}
+					})
+				}
+			</script>
+			<a class="subTableTitle">인증번호</a>
+			<input type="text" class="code" placeholder="인증번호를 입력해주세요.">
+			<button class="checkButton" onclick="checkNumber()">인증번호 확인</button>
+			<script>
+				function checkNumber() {
+					fetch('/auth/callback/phone', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						body: JSON.stringify({
+							phone: document.querySelector('.phone').value,
+							code: document.querySelector('.code').value
+						})
+					}).then(res => res.json()).then(json => {
+						if (json.status == 200) {
+							alert('인증 성공! 첩첩냥 계정에 연동되었어요.');
+							location.href = '/account';
+						} else {
+							alert('인증에 실패했어요. 다시 시도해주세요!');
+						}
+					})
+				}
+			</script>
+		</div>
+	</div>
+</body>

@@ -1,0 +1,126 @@
+@font-face {
+    font-family: 'HakgyoansimWoojuR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+	font-family: 'HakgyoansimWoojuR';
+}
+
+body {
+	background-color: bisque;
+}
+
+.title {
+	position: absolute;
+	top: 15%;
+	left: 50%;
+	transform: translate(-50%, -75%);
+	font-size: 80px;
+}
+
+@media screen and (max-width: 1600px) {
+	.mainTable { width: 70%; }
+}
+@media screen and (min-width: 1600px) {
+	.mainTable { width: 50%; }
+}
+
+.mainTable {
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	height: 350px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.subTable {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	width: 300px;
+	height: 350px;
+	background-color: rgb(71, 10, 10);
+	margin: 10px;
+	margin-right: 30px;
+	margin-left: 20px;
+	border-radius: 20px;
+	box-shadow: 5px 5px 5px 5px black;
+}
+
+.subTableTitle {
+	padding-top: 20px;
+	color: white;
+	text-decoration: none;
+	font-size: 30px;
+}
+
+.userName {
+	padding-top: 5px;
+	color: white;
+	text-decoration: none;
+	font-size: 20px;
+	padding-bottom: 15px;
+	text-align: center;
+}
+
+.subTable>img{
+	width: 170px;
+	height: 170px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border-radius: 100px;
+}
+
+.subTable>button{
+	width: 200px;
+	height: 50px;
+	background-color: #FFD700;
+	border: none;
+	border-radius: 10px;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.subTable>button:hover{
+	background-color: #6b601f;
+}
+
+.serverJoin>button{
+	width: 200px;
+	height: 50px;
+	background-color: #FFD700;
+	border: none;
+	border-radius: 10px;
+	font-size: 20px;
+	box-shadow: 2px 2px 2px 2px black;
+	font-weight: bold;
+}
+
+.serverJoin>button:hover{
+	background-color: #6b601f;
+}
+
+.serverJoin {
+	position: absolute;
+	top: 85%;
+	left: 50%;
+	transform: translate(-50%, -25%);
+	font-size: 100px;
+}
+
+button{
+	transition: all 0.3s;
+}
+
+.line{
+	width: 5px;
+	height: 120%;
+	background-color: black;
+	margin-top: 20px;
+}

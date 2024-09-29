@@ -1,0 +1,63 @@
+<head>
+	<title>연동│첩첩냥 계정</title>
+	<link href="/public/css/main.css" rel="stylesheet" type="text/css" />
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4596909141272544"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+	<div class="title">
+		첩첩냥 계정 연동
+	</div>
+	<div class="mainTable">
+		<div class="subTable">
+			<a class="subTableTitle">디스코드 연동</a>
+			{% if discord == None %}
+			<img src="public/image/no-image.png">
+			<a class="userName">아직 연동하지 않았어요.</a>
+			<button onclick="location.href='/auth/login/discord';">연동하기</button>
+			{% else %}
+			<img src="{{ discordAvatar }}">
+			<a class="userName">{{ discord }}<br><br>{{ discordId }}</a>
+			{%endif%}
+		</div>
+		<div class="subTable">
+			<a class="subTableTitle">트위치 연동</a>
+			{% if discord == None %}
+			<img src="public/image/no-image.png">
+			<a class="userName">디스코드 연동이 필요해요.</a>
+			<button disabled class="disabled">디스코드 연동 필요</button>
+			{% elif twitch == None %}
+			<img src="public/image/no-image.png">
+			<a class="userName">아직 연동하지 않았어요.</a>
+			<button onclick="location.href='/auth/login/twitch';">연동하기</button>
+			{% else %}
+			<img src="{{ twitchAvatar }}">
+			<a class="userName">{{ twitch }}<br><br>{{ twitchId }}</a>
+			{%endif%}
+		</div>
+		<div class="line"></div>
+		<div class="subTable">
+			<a class="subTableTitle">전화번호 인증</a>
+			{% if twitch == None %}
+			<a class="userName" style="margin-top: 30px;">트위치 연동이 필요해요.</a>
+			<button disabled class="disabled">트위치 연동 필요</button>
+			{% elif phone == None %}
+			<a class="userName" style="margin-top: 30px;">아직 연동하지 않았어요.</a>
+			<button onclick="location.href='/auth/phone';">연동하기</button>
+			{% else %}
+			<a class="userName" style="margin-top: 30px;">{{ phone }}</a>
+			{%endif%}
+			<a class="subTableTitle" style="margin-top: 30px;">전화번호 인증 시</a>
+			<a class="userName">보안을 강화할 수 있으며<br>정플롯종합대학 3학년 역할<br>획득이 가능해요!</a>
+		</div>
+	</div>
+	<div class="serverJoin">
+		{% if twitch == None %}
+		<button disabled class="disabled">트위치 연동 필요</button>
+		{% elif join %}
+		<button disabled class="disabled">입장 완료!</button>
+		{% else %}
+		<button onclick="location.href='/account/join';">정플롯종합대학 입장!</button>
+		{%endif%}
+	</div>
+</body>
